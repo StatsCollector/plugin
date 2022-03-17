@@ -1,0 +1,8 @@
+name: StatsCollector
+authors: [ytTobyo, sparkofyt]
+version: 1.0
+main: me.StatsCollector.StatsCollector
+api-version: 1.16
+commands:
+  stats:
+  
