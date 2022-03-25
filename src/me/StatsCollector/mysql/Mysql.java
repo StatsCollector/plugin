@@ -17,7 +17,7 @@ public class Mysql {
 	public static void connect() {
 		if (!isConnect())
 			try {
-				con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password);
+				con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database + "?requireSSL=true&useSSL=false&sslMode=VERIFY_IDENTITY&enabledTLSProtocols=TLSv1.2", username, password);
 				Bukkit.getConsoleSender().sendMessage("§7StatsCollector MYSQL is §2ONLINE!");
 			} catch (Exception e) {
 				e.printStackTrace();

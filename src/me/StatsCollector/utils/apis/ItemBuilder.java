@@ -8,6 +8,7 @@ import java.util.Map;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -120,6 +121,13 @@ public ItemBuilder setSkullOwner(String owner){
      im.addEnchant(ench, level, true);
      is.setItemMeta(im);
      return this;
+   }
+   
+   public ItemBuilder addFlags(ItemFlag... flags) {
+	   ItemMeta im = is.getItemMeta();
+	   im.addItemFlags(flags);
+	   is.setItemMeta(im);
+	   return this;
    }
    /**
     * Add multiple enchants at once.

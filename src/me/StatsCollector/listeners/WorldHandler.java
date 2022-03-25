@@ -3,18 +3,15 @@ package me.StatsCollector.listeners;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockIgniteEvent;
+import org.bukkit.event.block.*;
 import org.bukkit.event.block.BlockIgniteEvent.IgniteCause;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.player.PlayerFishEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
 
 import me.StatsCollector.utils.MaterialUtils;
 import me.StatsCollector.utils.statistics.StatisticType;
 
-public class World implements Listener {
-	
+public class WorldHandler implements Listener {
+
 	@EventHandler
 	public void on(BlockPlaceEvent e) {
 		StatisticType.WORLD_BLOCKS_PLACED.add(e.getPlayer(), 1);
@@ -46,16 +43,7 @@ public class World implements Listener {
 	}
 	
 	@EventHandler
-	public void on(PlayerFishEvent e) {
-		if(e.getCaught() != null) {
-			StatisticType.WORLD_FISHING_SUCCESSES.add(e.getPlayer(), 1);
-
-		}
+	public void on (PlayerChangedWorldEvent e) {
+		StatisticType.MOVEMENT_WORLD_VISITED.add(e.getPlayer(), 1);
 	}
-	
-	@EventHandler
-	public void on(PlayerRespawnEvent e) {
-		StatisticType.WORLD_TIMES_RESPAWNED.add(e.getPlayer(), 1);
-	}
-	
 }

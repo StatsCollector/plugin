@@ -1,7 +1,7 @@
       
 HeartsRegained runden auf eine komma stelle
 Beim Joinen -> save erstes mal joinen
-GUI machen -> /stats gui [player]
+GUI machen -> /stats [player]
 ArmorsWorn 
 
 Deaths:
@@ -23,36 +23,9 @@ Deaths:
       '2': Second command executed when this statistic's 'amount' key is reached.
       '3': You can use the configuration syntaxes {player} and {amount} for more creativity.
       '4': You can go up to 10 commands and 50000 in 'amount' key reach.
-
-Accuracy:
-  Hits_Dealt:
-    '23601':
-      '1': First command executed when this statistic's 'amount' key is reached.
-      '2': Second command executed when this statistic's 'amount' key is reached.
-      '3': You can use the configuration syntaxes {player} and {amount} for more creativity.
-      '4': You can go up to 10 commands and 50000 in 'amount' key reach.
-  Hits_Missed:
-    '9885':
-      '1': First command executed when this statistic's 'amount' key is reached.
-      '2': Second command executed when this statistic's 'amount' key is reached.
-      '3': You can use the configuration syntaxes {player} and {amount} for more creativity.
-      '4': You can go up to 10 commands and 50000 in 'amount' key reach.
-  Percentage:
-    '30947':
-      '1': First command executed when this statistic's 'amount' key is reached.
-      '2': Second command executed when this statistic's 'amount' key is reached.
-      '3': You can use the configuration syntaxes {player} and {amount} for more creativity.
-      '4': You can go up to 10 commands and 50000 in 'amount' key reach.
-
 Moderation:
   Players_Banned:
     '26068':
-      '1': First command executed when this statistic's 'amount' key is reached.
-      '2': Second command executed when this statistic's 'amount' key is reached.
-      '3': You can use the configuration syntaxes {player} and {amount} for more creativity.
-      '4': You can go up to 10 commands and 50000 in 'amount' key reach.
-  Players_Muted:
-    '27741':
       '1': First command executed when this statistic's 'amount' key is reached.
       '2': Second command executed when this statistic's 'amount' key is reached.
       '3': You can use the configuration syntaxes {player} and {amount} for more creativity.
@@ -65,12 +38,6 @@ Moderation:
       '4': You can go up to 10 commands and 50000 in 'amount' key reach.
   Players_Teleported:
     '1730':
-      '1': First command executed when this statistic's 'amount' key is reached.
-      '2': Second command executed when this statistic's 'amount' key is reached.
-      '3': You can use the configuration syntaxes {player} and {amount} for more creativity.
-      '4': You can go up to 10 commands and 50000 in 'amount' key reach.
-  Players_Spectated:
-    '10148':
       '1': First command executed when this statistic's 'amount' key is reached.
       '2': Second command executed when this statistic's 'amount' key is reached.
       '3': You can use the configuration syntaxes {player} and {amount} for more creativity.

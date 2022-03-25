@@ -6,6 +6,7 @@ import org.bukkit.Material;
 
 public enum StatisticCategory {
 	
+	LIVES("Lives", Material.CLOCK),
 	KILLS("Kills", Material.IRON_SWORD), 
 	DEATHS("Deaths", Material.SKELETON_SKULL), 
 	ACTIVITY("Activity", Material.PAPER), 
