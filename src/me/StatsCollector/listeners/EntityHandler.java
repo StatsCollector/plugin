@@ -25,8 +25,7 @@ public class EntityHandler implements Listener {
 	public void on(EntityDamageEvent e) {
 		if (e.getEntity() instanceof Player) {
 			Player p = (Player) e.getEntity();
-			if(e.getDamage() < 1000D)
-				StatisticType.SURVIVAL_HEARTS_LOST.addFloat(p, (float) e.getDamage());
+			if(e.getDamage() < 1000D) StatisticType.SURVIVAL_HEARTS_LOST.addFloat(p, (float) e.getDamage());
 			
 			DamageCause[] suicideCauses = {DamageCause.FALL, DamageCause.DROWNING, DamageCause.CUSTOM};
 			for(DamageCause cause : suicideCauses) {

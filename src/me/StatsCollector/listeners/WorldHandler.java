@@ -16,13 +16,6 @@ public class WorldHandler implements Listener {
 	public void on(BlockPlaceEvent e) {
 		StatisticType.WORLD_BLOCKS_PLACED.add(e.getPlayer(), 1);
 		
-		for(Material mat : MaterialUtils.ores) {
-			if(e.getBlock().getType() == mat) {
-				StatisticType.WORLD_ORES_MINED.add(e.getPlayer(), 1);
-
-			}
-		}
-		
 		for(Material mat : MaterialUtils.seeds) {
 			if(e.getItemInHand().getType() == mat) {
 				StatisticType.WORLD_SEEDS_PLANTED.add(e.getPlayer(), 1);
@@ -33,6 +26,12 @@ public class WorldHandler implements Listener {
 	@EventHandler
 	public void on(BlockBreakEvent e) {
 		StatisticType.WORLD_BLOCKS_BROKEN.add(e.getPlayer(), 1);
+		
+		for(Material mat : MaterialUtils.ores) {
+			if(e.getBlock().getType() == mat) {
+				StatisticType.WORLD_ORES_MINED.add(e.getPlayer(), 1);
+			}
+		}
 	}
 	
 	@EventHandler

@@ -39,4 +39,12 @@ public enum StatisticCategory {
 		}
 		return output;
 	}
+	
+	public static StatisticCategory getCategoryFromName(String name) {
+		for (StatisticCategory category : values()) {
+			if (category.getName().equals(name))
+				return category;
+		}
+		return null;
+	}
 }

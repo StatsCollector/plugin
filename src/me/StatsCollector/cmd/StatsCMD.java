@@ -1,6 +1,7 @@
 package me.StatsCollector.cmd;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -16,8 +17,8 @@ import me.StatsCollector.utils.Inventories;
 
 public class StatsCMD implements CommandExecutor, TabCompleter {
 
-	public static Inventory mainInventory;
-	public static Inventory categoryInventory;
+	public static HashMap<Player, Inventory> mainInventory = new HashMap<>();
+	public static HashMap<Player, Inventory> categoryInventory = new HashMap<>();
 	public static Player targetPlayer;
 	
 	@Override
@@ -27,15 +28,15 @@ public class StatsCMD implements CommandExecutor, TabCompleter {
 		if (p.hasPermission(FileManager.GuiOpen)) {
 			if (args.length == 0) {
 				targetPlayer = p;
-				mainInventory = Inventories.MainGui(p);
-				p.openInventory(mainInventory);
+				mainInventory.put(p, Inventories.MainGui(p));
+				p.openInventory(mainInventory.get(p));
 			} else if (args.length == 1) {
 				Player target = Bukkit.getPlayer(args[0]);
 					
 				if(target != null) {
 					targetPlayer = target;
-					mainInventory = Inventories.MainGui(target);
-					p.openInventory(mainInventory);	
+					mainInventory.put(p, Inventories.MainGui(target));
+					p.openInventory(mainInventory.get(p));	
 				} else {
 					p.sendMessage(FileManager.PlayerOffline);
 				}
@@ -57,5 +58,4 @@ public class StatsCMD implements CommandExecutor, TabCompleter {
 		}
 		return new ArrayList<>();
 	}
-	
 }

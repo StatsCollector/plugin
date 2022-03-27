@@ -5,40 +5,56 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.StatsCollector.cmd.StatsCMD;
-import me.StatsCollector.listeners.*;
+import me.StatsCollector.listeners.EntityHandler;
+import me.StatsCollector.listeners.InventoryHandler;
+import me.StatsCollector.listeners.PlayerHandler;
+import me.StatsCollector.listeners.WorldHandler;
 import me.StatsCollector.mysql.Mysql;
 import me.StatsCollector.utils.FileManager;
+import me.StatsCollector.utils.Runnable;
 import me.StatsCollector.utils.bstats.Metrics;
+import me.StatsCollector.utils.statistics.StatisticType;
 
 public class StatsCollector extends JavaPlugin {
 
+	public static StatsCollector instance;
+	
 	@Override
 	public void onEnable() {
+		instance = this;
 		FileManager.create();
 		Mysql.connect();
 		createTables();
 		initListener();
 		initCommands();
 		
-		Bukkit.getOnlinePlayers().forEach(all -> FileManager.TimeSinceJoined.put(all, System.currentTimeMillis()));
-		Bukkit.broadcastMessage(""+Bukkit.getOnlinePlayers());
+		Bukkit.getOnlinePlayers().forEach(all -> {
+			FileManager.TimeSinceJoined.put(all, System.currentTimeMillis());
+			
+			if(!PlayerHandler.travelled.containsKey(all)) {
+				PlayerHandler.travelled.put(all, 0);
+			}
+		});
+		Runnable.start();
 		new Metrics(this, 14620);		
 		super.onEnable();
 	}
 	
 	@Override
 	public void onDisable() {
-		Mysql.end();
-		
 		Bukkit.getOnlinePlayers().forEach(all -> {
 			FileManager.TimeSinceJoined.remove(all);
+			if (PlayerHandler.travelled.containsKey(all)) {
+				StatisticType.MOVEMENT_TRAVELLED.add(all, PlayerHandler.travelled.get(all));
+				PlayerHandler.travelled.remove(all);
+			}
 		});
 		
+		Mysql.end();
 		super.onDisable();
 	}
 	
 	private void createTables() {
-		//Mysql.createTable("General", "Sent INT, Kicked INT, Executed INT, Joined INT, Quit INT");
 		Mysql.createTable("Activity", "UUID VARCHAR(64), Sent INT, Kicked INT, Executed INT, Joined INT, Quit INT");
 		Mysql.createTable("Damage", "UUID VARCHAR(64), Players FLOAT, Mobs FLOAT, Animals FLOAT, Villagers FLOAT");
 		Mysql.createTable("Deaths", "UUID VARCHAR(64), ByMobs INT, ByPlayers INT, BySuicide INT");
@@ -64,4 +80,8 @@ public class StatsCollector extends JavaPlugin {
 		getCommand("stats").setTabCompleter(new StatsCMD());
 	}
 	
+	
+	public static StatsCollector getInstance() {
+		return instance;
+	}
 }

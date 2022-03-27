@@ -15,62 +15,44 @@ import me.StatsCollector.utils.statistics.StatisticCategory;
 import me.StatsCollector.utils.statistics.StatisticType;
 
 public class InventoryHandler implements Listener {
-	
+
 	@EventHandler
 	public void on(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
 		Inventory inv = e.getInventory();
 		ItemStack item = e.getCurrentItem();
 		int slot = e.getSlot();
-		
-		if (inv.getType() == InventoryType.FURNACE) {
-			if (slot == 2) {
-				StatisticType.INVENTORY_FOOD_COOKED.add(p, item.getAmount());
-			}
-		} else if (inv.getType() == InventoryType.WORKBENCH) {
-			if (slot == 0) {
-				StatisticType.INVENTORY_ITEMS_CRAFTED.add(p, item.getAmount());
 
+		if(item != null && item.getType() != Material.AIR) {
+			if(inv.getType() == InventoryType.FURNACE) {
+				if(slot == 2) StatisticType.INVENTORY_FOOD_COOKED.add(p, item.getAmount());
+			} else if (inv.getType() == InventoryType.WORKBENCH) {
+				if(slot == 0) StatisticType.INVENTORY_ITEMS_CRAFTED.add(p, item.getAmount());
+			} else if (inv.getType() == InventoryType.BREWING) {
+				if(slot == 0 || slot == 1 || slot == 2) StatisticType.INVENTORY_POTIONS_MADE.add(p, item.getAmount());
+			} else if (inv.getType() == InventoryType.CRAFTING) {
+				if(slot == 0) StatisticType.INVENTORY_ITEMS_CRAFTED.add(p, item.getAmount());
 			}
-		}else if(inv.getType() == InventoryType.BREWING) {
-			if (slot == 0 || slot == 1 || slot == 2) {
-				StatisticType.INVENTORY_POTIONS_MADE.add(p, item.getAmount());
-			}
-		}else if(inv.getType() == InventoryType.CRAFTING) {
-			if (slot == 0 ) {
-				StatisticType.INVENTORY_ITEMS_CRAFTED.add(p, item.getAmount());
-			}
-		}
-		
-		if(inv == StatsCMD.mainInventory) {
-			if(item != null && item.getType() != Material.AIR) {
+
+			if(inv == StatsCMD.mainInventory.get(p)) {
 				if(item.getType() != Material.ARROW) {
 					if(item.getItemMeta().getDisplayName().length() < 2) return;
 					String name = item.getItemMeta().getDisplayName().substring(2, item.getItemMeta().getDisplayName().length());
-					if(StatsCMD.targetPlayer != null && getCategoryFromName(name) != null) {
-						StatsCMD.categoryInventory = Inventories.CategoryGui(StatsCMD.targetPlayer, getCategoryFromName(name));
-						p.openInventory(StatsCMD.categoryInventory);
+					if(StatsCMD.targetPlayer != null && StatisticCategory.getCategoryFromName(name) != null) {
+						StatsCMD.categoryInventory.put(p, Inventories.CategoryGui(StatsCMD.targetPlayer, StatisticCategory.getCategoryFromName(name)));
+						p.openInventory(StatsCMD.categoryInventory.get(p));
 					}
-					
 				} else {
 					p.closeInventory();
 				}
-			}
-			e.setCancelled(true);
-		} else if(inv == StatsCMD.categoryInventory) {
-			if(item != null && item.getType() != Material.AIR) {
+				e.setCancelled(true);
+			} else if(inv == StatsCMD.categoryInventory.get(p)) {
 				if(item.getType() == Material.ARROW) {
-					p.openInventory(StatsCMD.mainInventory);
+					p.openInventory(StatsCMD.mainInventory.get(p));
 				}
+				e.setCancelled(true);
 			}
-			e.setCancelled(true);
 		}
 	}
 	
-	public static StatisticCategory getCategoryFromName(String name) {
-		for(StatisticCategory category : StatisticCategory.values()) {
-			if(category.getName().equals(name)) return category;
-		}
-		return null;
-	}
 }
