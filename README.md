@@ -26,4 +26,4 @@
 
 <p align="left"> <img src="https://cdn.discordapp.com/attachments/680856712143831041/957626894860288080/LineBreak_Dark.png" alt="LineBreak"/></p>
   <br>
-  <h1>It is not allowed to reprogram it and upload it somewhere else! It is also not allowed to re-upload!</h1>
+  <h1>It is not allowed to upload it somewhere else! It is also not allowed to re-upload!</h1>
