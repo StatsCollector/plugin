@@ -3,11 +3,14 @@
 <p align="left"> <img src="https://cdn.discordapp.com/attachments/680856712143831041/957626894860288080/LineBreak_Dark.png" alt="LineBreak"/></p>
 
 <p align="left"> <img src="https://cdn.discordapp.com/attachments/680856712143831041/957626388335177819/Features.png" alt="Features"/></p>
-  <h1> This plugin collects various data from statistics ingame, which can then be displayed via a GUI, there are saved via MySQL. </h1>
+  <h1> This plugin collects various data from statistics ingame, which can then be displayed via a GUI, there are saved via MySQL. <br>Update Checker <br>Customizable Messages <br>Customizable Permissions </h1>
   <br>
 
 <p align="left"> <img src="https://cdn.discordapp.com/attachments/680856712143831041/957626459743215636/Command.png" alt="Commands"/></p>
   <h1> /stats <Player> - Open the GUI <br> with Custom Permissions</h1>
+  <h1> /stats reset <player> - Reset all stats for you <br>With Custom Permission</h1> 
+  <h1> /stats reset <statistic> <player> - Reset a specific statistic <br>With Custom Permission</h1>
+
   <br>
   
 <p align="left"> <img src="https://cdn.discordapp.com/attachments/680856712143831041/957626575342415942/Media.png" alt="Media"/></p>
