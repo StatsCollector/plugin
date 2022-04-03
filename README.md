@@ -3,13 +3,16 @@
 <p align="left"> <img src="https://cdn.discordapp.com/attachments/680856712143831041/957626894860288080/LineBreak_Dark.png" alt="LineBreak"/></p>
 
 <p align="left"> <img src="https://cdn.discordapp.com/attachments/680856712143831041/957626388335177819/Features.png" alt="Features"/></p>
-  <h1> This plugin collects various data from statistics ingame, which can then be displayed via a GUI, there are saved via MySQL. <br>Update Checker <br>Customizable Messages <br>Customizable Permissions </h1>
+  <h1>This plugin collects various data from statistics ingame, which can then be displayed via a GUI, there are saved via MySQL.</h1>
   <br>
+  <h1>Update Checker</h1>
+  <h1>Customizable Messages</h1>
+  <h1>Customizable Permissions</h1>
 
 <p align="left"> <img src="https://cdn.discordapp.com/attachments/680856712143831041/957626459743215636/Command.png" alt="Commands"/></p>
-  <h1> /stats <Player> - Open the GUI <br> with Custom Permissions</h1>
-  <h1> /stats reset <player> - Reset all stats for you <br>With Custom Permission</h1> 
-  <h1> /stats reset <statistic> <player> - Reset a specific statistic <br>With Custom Permission</h1>
+  <h1>/stats <Player> - Open the GUI <br> with Custom Permissions</h1>
+  <h1>/stats reset <player> - Reset all stats for you <br>With Custom Permission</h1> 
+  <h1>/stats reset <statistic> <player> - Reset a specific statistic <br>With Custom Permission</h1>
 
   <br>
   
@@ -19,7 +22,7 @@
   <br>
   
 <p align="left"> <img src="https://cdn.discordapp.com/attachments/680856712143831041/957626642644205628/Support.png" alt="Support"/></p>
-  <h1> You can contact us on SpigotMC or on Discord: </h1>
+  <h1>You can contact us on SpigotMC or on Discord: </h1>
   <ul>SpigotMC: <li>https://www.spigotmc.org/members/yttobyo.312481/</li> <li>https://www.spigotmc.org/members/sparkofyt.888137/</li> </ul>
   <ul>Discord: <li>Tobyo [GER]#5909</li> <li>sparkofyt#4274</li> </ul>
 
